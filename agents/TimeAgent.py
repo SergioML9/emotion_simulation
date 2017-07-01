@@ -21,6 +21,7 @@ class TimeAgent(Agent):
         self.new_day = False
         self.day_interval = 'free_time'
         self.work_remaining_time = 0
+        self.worked_time = 0
 
     def step(self):
 
@@ -60,7 +61,9 @@ class TimeAgent(Agent):
         is_overtime = occupancy_settings.workersTiming['leaving_time'] <= self.clock < occupancy_settings.workersTiming['overtime_limit']
         is_sleep_time = occupancy_settings.workersTiming['sleep_start'] <= self.clock < occupancy_settings.workersTiming['sleep_end']
 
-        if is_work_time: self.day_interval = 'work_time'
+        if is_work_time:
+            self.day_interval = 'work_time'
+            self.worked_time += 1
         elif is_overtime: self.day_interval = 'overtime'
         elif is_sleep_time: self.day_interval = 'sleep_time'
         else: self.day_interval = 'free_time'
@@ -72,4 +75,4 @@ class TimeAgent(Agent):
             self.work_remaining_time = remaining_hours * 60 + remaining_minutes
         else: self.work_remaining_time = 0
 
-        print("Work remaining time: " + str(self.work_remaining_time))
+        #print("Work remaining time: " + str(self.work_remaining_time))
