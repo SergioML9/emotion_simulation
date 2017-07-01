@@ -1,5 +1,5 @@
 from model.SOMENModel import SOMENModel
 
-model = SOMENModel(1)
-for i in range(721):
+model = SOMENModel(10)
+for i in range(14400):
     model.step()

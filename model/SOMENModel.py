@@ -3,6 +3,8 @@ from mesa.time import BaseScheduler
 
 from agents.WorkerAgent import WorkerAgent
 from agents.TimeAgent import TimeAgent
+from agents.SensorAgent import SensorAgent
+
 from classes.Task import Task
 
 import configuration.workload_settings as workload_settings
@@ -23,6 +25,7 @@ class SOMENModel(Model):
         self.workers_number = workers_number
         self.agents = []
         self.workers = []
+        self.average_stress = 0
 
         # Schedule
         self.schedule = BaseScheduler(self)
@@ -32,6 +35,11 @@ class SOMENModel(Model):
         self.schedule.add(self.timer)
         self.agents.append(self.timer)
 
+        # Create sensor agent
+        self.sensor = SensorAgent(len(self.agents), self)
+        self.schedule.add(self.sensor)
+        self.agents.append(self.sensor)
+
         # Create workers agents
         for i in range(self.workers_number):
             worker = WorkerAgent(i+len(self.agents), self)
@@ -40,10 +48,12 @@ class SOMENModel(Model):
 
     def step(self):
         self.schedule.step()
-        
+
         if self.timer.new_day:
             self.addTasks()
             self.createEmailsDistribution()
+
+        self.average_stress = sum(worker.stress for worker in self.workers)/len(self.workers)
 
 
     def addTasks(self):

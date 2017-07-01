@@ -5,6 +5,8 @@ from classes.Email import Email
 import configuration.general_settings as general_settings
 import configuration.model_settings as model_settings
 
+import math
+
 class WorkerAgent(Agent):
 
     def __init__(self, worker_id, model):
@@ -34,6 +36,11 @@ class WorkerAgent(Agent):
 
         # Calculate interval and do tasks
         if self.model.timer.day_interval == 'work_time':
+
+            # Add temperature, humidity and noise contribution
+            self.addAmbientContribution()
+            self.addNoiseContribution()
+
             self.calculateTimePressure()
 
             # Check if there is a new email
@@ -50,6 +57,11 @@ class WorkerAgent(Agent):
                     self.rest()
 
         elif self.model.timer.day_interval == 'overtime':
+
+            # Add temperature, humidity and noise contribution
+            self.addAmbientContribution()
+            self.addNoiseContribution()
+
             self.calculateTimePressure()
             if len(self.tasks) > 0:
                 self.workInTask()
@@ -60,12 +72,16 @@ class WorkerAgent(Agent):
                 self.rest()
 
         elif self.model.timer.day_interval == 'free_time':
-            print("I'm at free time")
+            self.rest()
 
+        #self.printTimePressure()
+        #self.printEffectiveFatigue()
+        #self.printTasksNumber()
+        self.stress = min(1, (self.event_stress + self.time_pressure + self.effective_fatigue) / 3)
+        self.calculateProductivity()
 
-        self.printTimePressure()
-        self.printEffectiveFatigue()
-        self.printTasksNumber()
+        self.printStress()
+        self.printProductivity()
 
     def workInTask(self):
 
@@ -104,6 +120,9 @@ class WorkerAgent(Agent):
         self.tasks.append(task)
         self.total_tasks_number += 1
 
+    def calculateProductivity(self):
+        self.productivity = 1/(0.4*math.sqrt(2*math.pi))*pow(math.e, -0.5*pow(((self.stress-0.5)/0.2), 2))
+
     def calculateEventStress(self):
         self.event_stress = min(1, len(self.tasks)/2/self.average_daily_tasks)
 
@@ -113,8 +132,8 @@ class WorkerAgent(Agent):
         self.time_pressure = total_tasks_remaining_time/(total_tasks_remaining_time+max(1, self.model.timer.work_remaining_time))
 
     def addOvertimeHoursContribution(self):
-        wpmf = model_settings.overtime_contribution/general_settings.time_by_step
-        self.effective_fatigue += wpmf/(wpmf+self.fatigue_tolerance)
+        wpmf = model_settings.overtime_contribution
+        self.effective_fatigue += wpmf/(wpmf+self.fatigue_tolerance)/general_settings.time_by_step
         if self.effective_fatigue > 1: self.effective_fatigue = 1
 
     def addNewEmailContribution(self):
@@ -123,8 +142,23 @@ class WorkerAgent(Agent):
         if self.effective_fatigue > 1: self.effective_fatigue = 1
 
     def addRestTimeContribution(self):
-        self.effective_fatigue -= model_settings.rest_time_contribution/general_settings.time_by_step/10
+        self.effective_fatigue -= model_settings.rest_time_contribution/10/general_settings.time_by_step
         if self.effective_fatigue < 0: self.effective_fatigue = 0
+
+    def addAmbientContribution(self):
+
+        wpmf = abs(self.model.sensor.wbgt-22)*model_settings.ambient_contribution
+
+        if self.model.sensor.wbgt > 25 or self.model.sensor.wbgt < 20:
+            self.effective_fatigue += (wpmf/(wpmf+self.fatigue_tolerance))/general_settings.time_by_step
+        else:
+            self.effective_fatigue -= wpmf/10
+        if self.effective_fatigue > 1: self.effective_fatigue = 1
+        if self.effective_fatigue < 0: self.effective_fatigue = 0
+
+    def addNoiseContribution(self):
+        wpmf = (self.model.sensor.noise - 60)*model_settings.noise_contribution/general_settings.time_by_step
+        self.effective_fatigue += (wpmf/(wpmf+self.fatigue_tolerance))/general_settings.time_by_step
 
     def calculateAverageDailyTasks(self, days):
         self.average_daily_tasks = self.total_tasks_number/days
@@ -143,3 +177,9 @@ class WorkerAgent(Agent):
 
     def printEffectiveFatigue(self):
         print("I am worker " + str(self.unique_id) + " and my effective fatigue level is " + str(self.effective_fatigue))
+
+    def printStress(self):
+        print("I am worker " + str(self.unique_id) + " and my stress level is " + str(self.stress))
+
+    def printProductivity(self):
+        print("I am worker " + str(self.unique_id) + " and my productivity is " + str(self.productivity))

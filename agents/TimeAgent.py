@@ -47,6 +47,7 @@ class TimeAgent(Agent):
         # Check if it is new work day
         if occupancy_settings.workersTiming['arrival_time'] == self.clock:
             self.new_day = True
+            self.worked_time = 0
 
         # Get day interval
         self.getDayInterval()
