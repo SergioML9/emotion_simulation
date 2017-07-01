@@ -1,1 +1,1 @@
-# emotion_simulation
+# Emotional agent-based simulation of a smart office
