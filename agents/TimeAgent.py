@@ -19,6 +19,7 @@ class TimeAgent(Agent):
         self.minutes = self.clock.minute
         self.seconds = self.clock.second-self.time_by_step
         self.new_day = False
+        self.new_hour = False
         self.day_interval = 'free_time'
         self.work_remaining_time = 0
         self.worked_time = 0
@@ -30,6 +31,7 @@ class TimeAgent(Agent):
 
         # Calculate time
         self.new_day = False
+        self.new_hour = False
 
         self.seconds = self.seconds + self.time_by_step
         if self.seconds > 59:
@@ -38,6 +40,7 @@ class TimeAgent(Agent):
             if self.minutes > 59:
                 self.hours = self.hours + math.floor(self.minutes/60)
                 self.minutes = 0
+                self.new_hour = True
                 if self.hours > 23:
                     self.days = self.days + math.floor(self.hours/24)
                     self.hours = 0

@@ -4,6 +4,7 @@ from classes.Email import Email
 
 import configuration.general_settings as general_settings
 import configuration.model_settings as model_settings
+import configuration.automation_settings as automation_settings
 
 import math
 
@@ -21,12 +22,16 @@ class WorkerAgent(Agent):
         self.email_read_distribution_over_time = []
         self.emails = []
         self.tasks = []
+        self.emails_read = 0
+        self.overtime_hours = 0
+        self.rest_at_work_hours = 0
+        self.tasks_completed = 0
 
         # Stress attributes initialization
         self.stress = 0
-        self.event_stress = 0
+        self.event_stress = 0.5
         self.effective_fatigue = 0
-        self.time_pressure = 0
+        self.time_pressure = 0.5
         self.productivity = 1
 
     def step(self):
@@ -40,6 +45,7 @@ class WorkerAgent(Agent):
             # Add temperature, humidity and noise contribution
             self.addAmbientContribution()
             self.addNoiseContribution()
+            self.addLuminosityContribution()
 
             self.calculateTimePressure()
 
@@ -54,22 +60,24 @@ class WorkerAgent(Agent):
                 if len(self.tasks) > 0:
                     self.workInTask()
                 else:
+                    self.rest_at_work_hours += 1/60
                     self.rest()
 
         elif self.model.timer.day_interval == 'overtime':
 
-            # Add temperature, humidity and noise contribution
+            # Add temperature, humidity, luminosity and noise contribution
             self.addAmbientContribution()
             self.addNoiseContribution()
+            self.addLuminosityContribution()
 
             self.calculateTimePressure()
             if len(self.tasks) > 0:
                 self.workInTask()
+                self.overtime_hours += 1/60
                 self.addOvertimeHoursContribution()
 
         elif self.model.timer.day_interval == 'sleep_time':
-            if len(self.tasks) == 0:
-                self.rest()
+            self.rest()
 
         elif self.model.timer.day_interval == 'free_time':
             self.rest()
@@ -80,8 +88,8 @@ class WorkerAgent(Agent):
         self.stress = min(1, (self.event_stress + self.time_pressure + self.effective_fatigue) / 3)
         self.calculateProductivity()
 
-        self.printStress()
-        self.printProductivity()
+        #self.printStress()
+        #self.printProductivity()
 
     def workInTask(self):
 
@@ -89,12 +97,13 @@ class WorkerAgent(Agent):
         current_task = self.tasks[0]
 
         # work in the task selected
-        current_task.remaining_time -= self.productivity*general_settings.time_by_step/60
+        current_task.remaining_time -= (self.productivity+model_settings.tasks_automation_contribution)*general_settings.time_by_step/60
 
         # check if the task has finished
         if current_task.remaining_time <= 0:
             self.tasks.pop(0)
             current_task = None
+            self.tasks_completed += 1
 
     def receiveEmail(self):
         self.emails.append(Email())
@@ -112,6 +121,7 @@ class WorkerAgent(Agent):
         if current_email.read_time <= 0:
             self.emails.pop(0)
             current_email = None
+            self.emails_read += 1
 
     def rest(self):
         self.addRestTimeContribution()
@@ -123,13 +133,13 @@ class WorkerAgent(Agent):
     def calculateProductivity(self):
         self.productivity = 1/(0.4*math.sqrt(2*math.pi))*pow(math.e, -0.5*pow(((self.stress-0.5)/0.2), 2))
 
-    def calculateEventStress(self):
-        self.event_stress = min(1, len(self.tasks)/2/self.average_daily_tasks)
+    def calculateEventStress(self, tasks_number):
+        self.event_stress = min(1, tasks_number/2/self.average_daily_tasks)
 
     def calculateTimePressure(self):
         total_tasks_remaining_time = sum(task.remaining_time for task in self.tasks)
         #print("I am worker " + str(self.unique_id) + " and I have a total task duration of " + str(total_tasks_remaining_time))
-        self.time_pressure = total_tasks_remaining_time/(total_tasks_remaining_time+max(1, self.model.timer.work_remaining_time))
+        self.time_pressure = total_tasks_remaining_time/(total_tasks_remaining_time+self.model.timer.work_remaining_time+60)
 
     def addOvertimeHoursContribution(self):
         wpmf = model_settings.overtime_contribution
@@ -147,18 +157,38 @@ class WorkerAgent(Agent):
 
     def addAmbientContribution(self):
 
-        wpmf = abs(self.model.sensor.wbgt-22)*model_settings.ambient_contribution
-
         if self.model.sensor.wbgt > 25 or self.model.sensor.wbgt < 20:
+            wpmf = abs(self.model.sensor.wbgt-22)*model_settings.ambient_contribution
             self.effective_fatigue += (wpmf/(wpmf+self.fatigue_tolerance))/general_settings.time_by_step
         else:
-            self.effective_fatigue -= wpmf/10
+            wpmf = model_settings.ambient_contribution*22/(6*abs(22-self.model.sensor.wbgt+0.1))
+            self.effective_fatigue -= wpmf/10/general_settings.time_by_step
         if self.effective_fatigue > 1: self.effective_fatigue = 1
         if self.effective_fatigue < 0: self.effective_fatigue = 0
 
     def addNoiseContribution(self):
-        wpmf = (self.model.sensor.noise - 60)*model_settings.noise_contribution/general_settings.time_by_step
-        self.effective_fatigue += (wpmf/(wpmf+self.fatigue_tolerance))/general_settings.time_by_step
+
+        if self.model.sensor.noise > 65:
+            wpmf = (self.model.sensor.noise - 60)*model_settings.noise_contribution/general_settings.time_by_step
+            self.effective_fatigue += (wpmf/(wpmf+self.fatigue_tolerance))/general_settings.time_by_step
+        else:
+            wpmf = abs(self.model.sensor.noise-60)*model_settings.noise_contribution/general_settings.time_by_step
+            self.effective_fatigue -= wpmf/10/general_settings.time_by_step
+
+        if self.effective_fatigue > 1: self.effective_fatigue = 1
+        if self.effective_fatigue < 0: self.effective_fatigue = 0
+
+    def addLuminosityContribution(self):
+
+        if self.model.sensor.luminosity > 750 or self.model.sensor.luminosity < 450:
+            wpmf = abs(self.model.sensor.luminosity-600)*model_settings.luminosity_contibution
+            self.effective_fatigue += (wpmf/(wpmf+self.fatigue_tolerance))/general_settings.time_by_step
+        else:
+            wpmf = 600/(4*abs(600-self.model.sensor.luminosity))*model_settings.luminosity_contibution
+            self.effective_fatigue -= wpmf/10/general_settings.time_by_step
+
+        if self.effective_fatigue > 1: self.effective_fatigue = 1
+        if self.effective_fatigue < 0: self.effective_fatigue = 0
 
     def calculateAverageDailyTasks(self, days):
         self.average_daily_tasks = self.total_tasks_number/days
