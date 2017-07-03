@@ -17,6 +17,7 @@ class SensorAgent(Agent):
         self.luminosity = 500
         self.noise = 55
         self.wbgt = 22
+        self.state = 'on'
 
     def step(self):
         #self.temperature = self.temperature_data[self.temperature_data['day'] == self.model.timer.days%29][self.temperature_data['hour'] == self.model.timer.clock].at[0, 'temp']

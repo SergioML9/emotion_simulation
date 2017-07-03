@@ -23,6 +23,7 @@ class TimeAgent(Agent):
         self.day_interval = 'free_time'
         self.work_remaining_time = 0
         self.worked_time = 0
+        self.state = 'on'
 
     def step(self):
 

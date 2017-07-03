@@ -1,17 +1,66 @@
 from mesa import Agent
 from classes.Task import Task
 from classes.Email import Email
+from transitions import Machine
+from transitions import State
+import space.aStar
+from agents.behaviourMarkov import Markov
+from collections import OrderedDict
 
+import operator
 import configuration.general_settings as general_settings
 import configuration.model_settings as model_settings
 import configuration.automation_settings as automation_settings
+import configuration
 
 import math
 
 class WorkerAgent(Agent):
 
-    def __init__(self, worker_id, model):
+    def __init__(self, worker_id, model, json):
         super().__init__(worker_id, model)
+
+        #SOBA
+        self.behaviour = json['lifeWay']
+        self.type = json['type']
+        
+        #State machine
+        self.positionByState = OrderedDict()
+        states = []
+        for state in json['states']:
+            name = state['name']
+            pos = self.model.getPosState(name, self.type)
+            on_enter = 'start_activity'
+            on_exit = 'finish_activity'
+            self.positionByState[name] = pos
+            states.append(State(name=name, on_enter=[on_enter], on_exit=[on_exit]))
+        self.machine = Machine(model=self, states=states, initial=states[0].name)
+
+        self.triggers = {}
+        n_state = 0
+        for state in json['states']:
+            name = state['name']
+            self.machine.add_transition('setState'+str(n_state), '*', name)
+            self.triggers[name] = 'setState'+str(n_state)+'()'
+            n_state = n_state + 1
+
+        self.markov_matrix = json['matrix']
+        self.markov_machine = Markov(self)
+
+        #control
+        self.markov = True
+        self.time_activity = 0
+        self.place_to_go = self.model.outBuilding.pos
+        self.movements = []
+        self.N = 0
+        self.onMyWay1 = False
+        self.onMyWay2 = False
+        self.costMovementToNewRoom = 0
+        self.costMovementInNewRoom = 0
+        self.lastSchedule = 0.0
+        self.room1 = False
+        self.room2 = False
+
 
         # Agent attributes initialization
         self.step_counter = 0
@@ -34,8 +83,113 @@ class WorkerAgent(Agent):
         self.time_pressure = 0.5
         self.productivity = 1
 
-    def step(self):
 
+    # Methods when entering/exit states
+    def start_activity(self):
+        self.markov = False
+        self.place_to_go = self.getPlaceToGo()
+        if self.pos != self.place_to_go:
+            self.movements = space.aStar.getPath(self.model, self.pos, self.place_to_go)
+        else:
+            self.movements = [self.pos]
+        print(self.movements)
+        time_in_state = self.model.getTimeInState(self)[list(self.positionByState.keys()).index(self.state)]
+        self.time_activity = int(self.model.clock.getMinuteFromHours(time_in_state)*60 / configuration.settings.time_by_step)
+        self.N = 0
+
+    def finish_activity(self):
+        pass
+
+    #Movement
+    def occupantMovePos(self, new_position):
+        ux, uy = self.pos
+        nx, ny = new_position
+        for room in self.model.rooms:
+            rx, ry = room.pos
+            if room.pos == self.pos:
+            #Cost as steps
+                if (rx == nx):
+                    self.costMovemenToNewRoom = room.dy/2 * (1/configuration.settings.speed) * (1/configuration.settings.time_by_step)# m * seg/m * step/seg
+                if (ry == ny):
+                    self.costMovemenToNewRoom = room.dx/2 * (1/configuration.settings.speed) * (1/configuration.settings.time_by_step)
+            if room.pos == new_position:
+                if (rx == ux):
+                    self.costMovementInNewRoom = room.dy/2 * (1/configuration.settings.speed) * (1/configuration.settings.time_by_step)
+                if (ry == uy):
+                    self.costMovementInNewRoom = room.dx/2 * (1/configuration.settings.speed) * (1/configuration.settings.time_by_step)
+
+    def getPlaceToGo(self):
+        place_to_go = self.pos
+        possible_rooms = []
+        for room in self.model.rooms:
+            if room.name == self.positionByState[self.state]:
+                possible_rooms.append(room.pos)
+        if place_to_go in possible_rooms:
+            return place_to_go
+        if len(possible_rooms) > 1:
+            place_to_go = random.choice(possible_rooms)
+        elif len(possible_rooms) > 0:
+            place_to_go = possible_rooms[0]
+        return place_to_go
+
+    def changeSchedule(self):
+        beh = sorted(self.behaviour.items(), key=operator.itemgetter(1))
+        nextSchedule = False
+        for i in beh:
+            a, b = i
+            if b < self.model.clock.clock:
+                nextSchedule = a
+        if nextSchedule != self.lastSchedule:
+            self.lastSchedule = nextSchedule
+            return True
+        else:
+            return False
+
+    def sobaStep(self):
+        self.model.getMatrix(self)
+        if self.markov == True or self.changeSchedule():
+            self.markov_machine.runStep(self.markov_matrix)
+        elif self.onMyWay1 == True:
+            if self.costMovemenToNewRoom > 0:
+                self.costMovemenToNewRoom = self.costMovemenToNewRoom - 1
+            else:
+                room1 = self.model.getRoom(self.pos)
+                room2 = self.model.getRoom(self.movements[self.N])
+                self.room1 = room1
+                self.room2 = room2
+                if room1.name.split(r".")[0] != room2.name.split(r".")[0]:
+                    self.model.openDoor(self, room1, room2)
+                self.model.popAgentRoom(self, self.pos)
+                self.model.grid.move_agent(self, self.movements[self.N])
+                self.model.pushAgentRoom(self, self.pos)
+                self.N = self.N + 1
+                self.onMyWay1 = False
+                self.onMyWay2 = True
+        elif self.onMyWay2 == True:
+            if self.costMovementInNewRoom > 0:
+                self.costMovementInNewRoom = self.costMovementInNewRoom - 1
+            else:
+                room1 = self.room1
+                room2 = self.room2
+                if room1.name.split(r".")[0] != room2.name.split(r".")[0]:
+                    self.model.closeDoor(self, room1, room2)
+                self.onMyWay2 = False
+                self.step()
+        elif self.pos != self.place_to_go:
+            self.occupantMovePos(self.movements[self.N])
+            self.onMyWay1 = True
+            self.step()
+        else:
+            self.N = 0
+            if self.time_activity > 0:
+                self.time_activity = self.time_activity - 1
+            else:
+                self.markov = True
+
+    def step(self):
+        print(self.state)
+        self.sobaStep()
+        
         # Step counter
         self.step_counter += 1
 
