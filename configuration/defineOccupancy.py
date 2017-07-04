@@ -21,7 +21,7 @@ def init():
 	#Define initial markov matrix
 	markov_matrixWorkers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
-	controlBehaviourWorkers = {'arriveTime': 9.00, 'lunchTime': 13.20, 'backLunchTime': 14.30, 'leaveWorkTime': 17.30}
+	controlBehaviourWorkers = {'arriveTime': 9.00, 'lunchTime': 13.00, 'backLunchTime': 14.00, 'leaveWorkTime': 17.30}
 
 	WorkersOccupants = {'type':'workers' , 'N':NWorkers, 'states': statesWorkers ,'matrix': markov_matrixWorkers, 'lifeWay': controlBehaviourWorkers}
 	

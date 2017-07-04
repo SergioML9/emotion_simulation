@@ -7,6 +7,8 @@ import space.aStar
 from agents.behaviourMarkov import Markov
 from collections import OrderedDict
 
+import model.ramenScript
+import random
 import operator
 import configuration.general_settings as general_settings
 import configuration.model_settings as model_settings
@@ -21,9 +23,11 @@ class WorkerAgent(Agent):
         super().__init__(worker_id, model)
 
         #SOBA
-        self.behaviour = json['lifeWay']
+        self.behaviour = {}
+        for k, v in json['lifeWay'].items():
+        	self.behaviour[k] = self.model.clock.getDownCorrectHour(v + random.randrange(-10, 11)/100)
         self.type = json['type']
-        
+
         #State machine
         self.positionByState = OrderedDict()
         states = []
@@ -60,7 +64,7 @@ class WorkerAgent(Agent):
         self.lastSchedule = 0.0
         self.room1 = False
         self.room2 = False
-
+        self.stepStartMovement = 0
 
         # Agent attributes initialization
         self.step_counter = 0
@@ -92,7 +96,6 @@ class WorkerAgent(Agent):
             self.movements = space.aStar.getPath(self.model, self.pos, self.place_to_go)
         else:
             self.movements = [self.pos]
-        print(self.movements)
         time_in_state = self.model.getTimeInState(self)[list(self.positionByState.keys()).index(self.state)]
         self.time_activity = int(self.model.clock.getMinuteFromHours(time_in_state)*60 / configuration.settings.time_by_step)
         self.N = 0
@@ -174,10 +177,12 @@ class WorkerAgent(Agent):
                 if room1.name.split(r".")[0] != room2.name.split(r".")[0]:
                     self.model.closeDoor(self, room1, room2)
                 self.onMyWay2 = False
+                model.ramenScript.addAgentMovement(self, self.room2.name, self.stepStartMovement, self.model.NStep)
                 self.step()
         elif self.pos != self.place_to_go:
             self.occupantMovePos(self.movements[self.N])
             self.onMyWay1 = True
+            self.stepStartMovement = self.model.NStep
             self.step()
         else:
             self.N = 0
@@ -187,7 +192,6 @@ class WorkerAgent(Agent):
                 self.markov = True
 
     def step(self):
-        print(self.state)
         self.sobaStep()
         
         # Step counter

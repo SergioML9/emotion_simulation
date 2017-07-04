@@ -4,6 +4,8 @@ from mesa.datacollection import DataCollector
 from mesa.space import MultiGrid
 from mesa.space import ContinuousSpace
 
+import model.ramenScript
+
 from collections import defaultdict
 import random
 from model.time import Time
@@ -424,6 +426,11 @@ class SOMENModel(Model):
             self.day = self.day + 1
         self.NStep = self.NStep + 1
 
+        if self.NStep > 400:
+            model.ramenScript.generateJSON()
+            while(True):
+                pass
+                
     def step(self):
 
         self.sobaStep()
