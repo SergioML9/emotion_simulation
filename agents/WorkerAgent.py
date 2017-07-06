@@ -198,6 +198,7 @@ class WorkerAgent(Agent):
         self.step_counter += 1
 
         # Calculate interval and do tasks
+        # if self.state == 'name'
         if self.model.timer.day_interval == 'work_time':
 
             # Add temperature, humidity and noise contribution
@@ -248,6 +249,11 @@ class WorkerAgent(Agent):
 
         #self.printStress()
         #self.printProductivity()
+        self.logStress()
+
+    def logStress(self):
+    	#model.ramenScript.addAgentEmotion(self, self.stress)
+        model.ramenScript.addAgentEmotion(self, math.randrange(0, 5))
 
     def workInTask(self):
 

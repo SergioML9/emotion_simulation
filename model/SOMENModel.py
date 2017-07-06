@@ -107,7 +107,8 @@ class SOMENModel(Model):
 
 
     #SOBA
-    def setAgents(self):        
+    def setAgents(self):
+         
         self.lights = []
         id_light = 0
         for room in self.rooms:

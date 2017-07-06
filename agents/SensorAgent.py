@@ -33,10 +33,14 @@ class SensorAgent(Agent):
         self.noise = max(45, min(75, self.noise))
 
         # luminosity
+
         if random.choice([True, False]): self.luminosity += 20/general_settings.time_by_step
         else: self.luminosity -= 20/general_settings.time_by_step
-
         self.luminosity = max(350, min(1000, self.luminosity))
+        for light in self.model.lights:
+            light.luminosity = self.luminosity
+
+
         if automation_settings.automate_temperature:
             self.wbgt = 22
 
