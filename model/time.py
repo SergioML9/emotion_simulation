@@ -7,7 +7,7 @@ class Time(Agent):
 
         self.timeByStep = configuration.settings.time_by_step
         self.day = 0
-        self.hour = 8
+        self.hour = 9
         self.minute = 0
         self.seg = 0
         self.clock = 00.00

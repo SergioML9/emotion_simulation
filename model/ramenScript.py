@@ -2,32 +2,41 @@ import json
 
 steps = [[] for _ in range(500)]
 
-for i in range(0, 10):
-	steps[0].append({ "agent": i, "position": "Hall.1"})
+steps[0].append({"light":'low', "room": 'Hall.1'})
+steps[0].append({"light":'low', "room": 'Lab1.1'})
+steps[0].append({"light":'low', "room": 'Lab2.1'})
+
 
 def addAgentMovement(agent, room, stepStart, stepEnd):
 	steps[stepStart+1].append({"agent":agent.unique_id, "moveTo": room, "toStep": stepEnd+1})
 
-def addAgentEmotion(agent, stress):
-	sentiment = ''
+def createAgent(agent, step):
+	steps[step].append({ "agent": agent.unique_id, "position": "entrance"})
 
-	if 0 < stress < 1:
+def addAgentEmotion(agent, stress, step):
+	sentiment = ''
+	if stress < 0.2:
 		sentiment = 'surprise'
-	elif 1 < stress < 2:
+	elif 0.2 < stress < 0.4:
 		sentiment = 'sadness'
-	elif 2 < stress < 3:
+	elif 0.4 < stress < 0.6:
 		sentiment = 'fear'
-	elif 3 < stress < 4:
+	elif 0.8 < stress < 0.8:
 		sentiment = 'happiness'
-	elif 4 < stress < 5:
+	elif 0.8 < stress:
 		sentiment = 'anger'
 	else:
 		sentiment = 'happiness'
+	steps[step].append({"agent":agent.unique_id, "sentiment": sentiment})
 
-	steps[stepStart+1].append({"agent":agent.unique_id, "sentiment": sentiment})
+def addLightState(room, state, step):
+	steps[step+2].append({"light":state, "room": room.name})
 
-def addLightState(room, state, stepStart):
-	steps[stepStart+1].append({"light":state, "room": room})
+def stateTV(state, step):
+	stateTV = 'false'
+	if state == True:
+		stateTV = 'true'
+	steps[step].append({"video": stateTV, "room": "Hall.4"})
 
 def generateJSON():
 	data = {"type":0, "steps": steps}

@@ -61,6 +61,7 @@ class SOMENModel(Model):
         self.NStep = 0
         self.placeByStateByTypeAgent = {}
         self.agentsWorkingByStep = []
+        self.agentsIn = 0
 
         # Schedule
         self.schedule = BaseScheduler(self)
@@ -120,6 +121,8 @@ class SOMENModel(Model):
                 for room2 in self.rooms:
                     if room.name.split(r".")[0] == room2.name.split(r".")[0]:
                         room2.light = light
+        
+        print(self.lights)
         # Height and Width
         height = self.grid.height
         width = self.grid.width
@@ -132,7 +135,7 @@ class SOMENModel(Model):
             self.placeByStateByTypeAgent[n_type_occupants['type']] = n_type_occupants['states']
             n_agents = n_type_occupants['N']
             for i in range(0, n_agents):
-                a = WorkerAgent(i+len(self.agents), self, n_type_occupants)
+                a = WorkerAgent(i+len(self.agents)+1000, self, n_type_occupants)
                 self.workers.append(a)
                 self.schedule.add(a)
                 self.grid.place_agent(a, self.outBuilding.pos)
@@ -140,6 +143,8 @@ class SOMENModel(Model):
                 self.num_occupants = self.num_occupants + 1
 
         self.schedule.add(self.clock)
+        for light in self.lights:
+            self.schedule.add(light)
 
     def isConected(self, pos):
         nextRoom = False
@@ -342,7 +347,7 @@ class SOMENModel(Model):
         possible_occupant = self.grid.get_cell_list_contents([pos])
         if (len(possible_occupant) > 0):
             for occupant in possible_occupant:
-                if isinstance(occupant,Occupant):
+                if isinstance(occupant, WorkerAgent):
                     return True
         return False
 
@@ -352,7 +357,7 @@ class SOMENModel(Model):
             if roomAux.name.split(r".")[0] == room.name.split(r".")[0]:
                 possible_occupant = self.grid.get_cell_list_contents(roomAux.pos)
             for occupant in possible_occupant:
-                if isinstance(occupant, Occupant) and occupant != agent:
+                if isinstance(occupant, WorkerAgent) and occupant != agent:
                     return True
         return False
 
@@ -362,7 +367,7 @@ class SOMENModel(Model):
             if roomAux.name.split(r".")[0] == room.name.split(r".")[0]:
                 possible_occupant = self.grid.get_cell_list_contents(roomAux.pos)
             for occupant in possible_occupant:
-                if isinstance(occupant, Occupant):
+                if isinstance(occupant, WorkerAgent):
                     return True
         return False
 
@@ -372,7 +377,7 @@ class SOMENModel(Model):
             if roomAux.name.split(r".")[0] == room.name.split(r".")[0]:
                 possible_occupant = self.grid.get_cell_list_contents(roomAux.pos)
             for occupant in possible_occupant:
-                if isinstance(occupant, Occupant) and occupant == agent:
+                if isinstance(occupant, WorkerAgent) and occupant == agent:
                     return True
         return False
 
@@ -427,7 +432,7 @@ class SOMENModel(Model):
             self.day = self.day + 1
         self.NStep = self.NStep + 1
 
-        if self.NStep > 400:
+        if self.NStep > 300:
             model.ramenScript.generateJSON()
             while(True):
                 pass

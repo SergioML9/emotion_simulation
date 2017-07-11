@@ -65,6 +65,7 @@ class WorkerAgent(Agent):
         self.room1 = False
         self.room2 = False
         self.stepStartMovement = 0
+        self.creation = True
 
         # Agent attributes initialization
         self.step_counter = 0
@@ -90,6 +91,11 @@ class WorkerAgent(Agent):
 
     # Methods when entering/exit states
     def start_activity(self):
+        if (self.state != 'leave') and (self.creation == True):
+            self.unique_id = self.model.agentsIn
+            self.model.agentsIn = self.model.agentsIn + 1
+            model.ramenScript.createAgent(self, self.model.NStep)
+            self.creation = ''
         self.markov = False
         self.place_to_go = self.getPlaceToGo()
         if self.pos != self.place_to_go:
@@ -101,7 +107,8 @@ class WorkerAgent(Agent):
         self.N = 0
 
     def finish_activity(self):
-        pass
+        if self.state == 'resting':
+            self.logTV(False)
 
     #Movement
     def occupantMovePos(self, new_position):
@@ -186,6 +193,8 @@ class WorkerAgent(Agent):
             self.step()
         else:
             self.N = 0
+            if self.state == 'resting':
+                self.logTV(True)
             if self.time_activity > 0:
                 self.time_activity = self.time_activity - 1
             else:
@@ -249,11 +258,15 @@ class WorkerAgent(Agent):
 
         #self.printStress()
         #self.printProductivity()
-        self.logStress()
+        if self.creation != True:
+            self.logStress()
 
     def logStress(self):
     	#model.ramenScript.addAgentEmotion(self, self.stress)
-        model.ramenScript.addAgentEmotion(self, math.randrange(0, 5))
+        model.ramenScript.addAgentEmotion(self, random.randrange(0, 10)/10, self.model.NStep)
+    
+    def logTV(self, state):
+        model.ramenScript.stateTV(state, self.model.NStep)
 
     def workInTask(self):
 

@@ -29,19 +29,19 @@ class Light(Agent):
     def sensorCheck(self):
         userInRoom = self.model.ThereIsSomeOccupantInRoom(self.room)
         if userInRoom == True:
-            if 2 > self.luminosity > 1:
-                self.switch_low
-            elif 3 > self.luminosity > 2:
-                self.switch_medium
+            if 450 > self.luminosity:
+                self.switch_low()
+            elif 750 > self.luminosity > 450:
+                self.switch_medium()
             else:
-                self.switch_high
+                self.switch_high()
         else:
             if self.state != 'off':
                 if self.wait_off > 0:
                     self.wait_off = self.wait_off - 1
                 else:
                     self.switch_off()
-                    self.wait_off = 15
+                    self.wait_off = 3
             else:
                 pass
 
@@ -54,10 +54,10 @@ class Light(Agent):
 
     #Metodos de entrada y salida de los estados
     def set_off(self):
-        model.ramenScript.addLightState(self.room, 'off', self.model.NStep)
+        model.ramenScript.addLightState(self.room, 'low', self.model.NStep)
 
     def set_low(self):
-        model.ramenScript.addLightState(self.room, 'low', self.model.NStep)
+        model.ramenScript.addLightState(self.room, 'medium', self.model.NStep)
 
     def set_medium(self):
         model.ramenScript.addLightState(self.room, 'medium', self.model.NStep)
