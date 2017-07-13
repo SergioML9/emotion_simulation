@@ -54,7 +54,10 @@ class SOMENModel(Model):
             self.workers.append(worker)
 
         # Create data collectors
-        self.model_collector = DataCollector(model_reporters={"Average Stress": lambda a: a.average_stress})
+        self.model_collector = DataCollector(model_reporters={"Average Stress": lambda a: a.average_stress,
+            "Average Event Stress": lambda a: a.average_event_stress, "Average Time Pressure": lambda a: a.average_time_pressure,
+            "Average Effective Fatigue": lambda a: a.average_effective_fatigue,
+            "Average Productivity": lambda a: a.average_productivity})
         self.worker_collector = WorkerCollector(agent_reporters={"Stress": lambda a: a.stress,
             "Event Stress": lambda a: a.event_stress, "Time Pressure": lambda a: a.time_pressure,
             "Effective Fatigue": lambda a: a.effective_fatigue, "Productivity": lambda a: a.productivity,
@@ -75,6 +78,10 @@ class SOMENModel(Model):
 
 
         self.average_stress = sum(worker.stress for worker in self.workers)/len(self.workers)
+        self.average_event_stress = sum(worker.event_stress for worker in self.workers)/len(self.workers)
+        self.average_time_pressure = sum(worker.time_pressure for worker in self.workers)/len(self.workers)
+        self.average_effective_fatigue = sum(worker.effective_fatigue for worker in self.workers)/len(self.workers)
+        self.average_productivity = sum(worker.productivity for worker in self.workers)/len(self.workers)
 
         if self.timer.new_hour:
             self.worker_collector.collect(self)
