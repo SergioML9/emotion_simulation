@@ -15,7 +15,7 @@ def init():
 		{'name':'leave', 'position': 'outBuilding'}, #initial state (the first)
 		{'name':'working in my workplace', 'position': {'Lab1.3': 1, 'Lab1.4': 1, 'Lab1.6': 1, 'Lab1.7': 1, 'Lab1.8': 1, 'Lab2.3': 1, 'Lab2.4': 1, 'Lab2.6': 1, 'Lab2.7': 1, 'Lab2.8': 1}},
 		{'name':'resting', 'position':'Hall.4'},
-		{'name':'lunch', 'position': 'outBuilding'}
+		{'name':'lunch', 'position': 'outLab'}
 	]
 
 	#Define initial markov matrix
@@ -35,11 +35,11 @@ def returnMatrix(agent, time):
 		if time < behaviour['arriveTime']:
 			new_matrix = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 		elif behaviour['lunchTime'] >= time >= behaviour['arriveTime']:
-			new_matrix = [[55, 35, 0, 0], [0, 75, 25, 0], [0, 100, 0, 0], [0, 0, 0, 0, 0]]
+			new_matrix = [[55, 35, 0, 0], [0, 75, 35, 0], [0, 100, 0, 0], [0, 0, 0, 0, 0]]
 		elif behaviour['backLunchTime']  >= time >= behaviour['lunchTime']:
 			new_matrix = [[0, 0, 0, 0], [0, 70, 0, 30], [0, 100, 0, 0], [0, 0, 0, 0]]
 		elif behaviour['leaveWorkTime'] >= time >= behaviour['backLunchTime']:
-			new_matrix = [[0, 0, 0, 0], [0, 75, 25, 0], [0, 100, 0, 0], [0, 100, 0, 0]]
+			new_matrix = [[0, 0, 0, 0], [0, 75, 40, 0], [0, 100, 0, 0], [0, 100, 0, 0]]
 		elif time >= behaviour['leaveWorkTime']:
 			new_matrix = [[100, 0, 0, 0], [70, 30, 0, 0], [0, 100, 0, 0], [0, 0, 0, 0]]
 		return new_matrix 
@@ -55,11 +55,11 @@ def getTimeInState(agent, time): #Hours.Minutes
 		if time < behaviour['arriveTime']:
 			timeActivity_matrix = [8.0, 0, 0, 0]
 		elif behaviour['lunchTime'] >= time >= behaviour['arriveTime']:
-			timeActivity_matrix = [0.30, 1.00, 0.10, 0]
+			timeActivity_matrix = [0.30, 1.00, 0.30, 0]
 		elif behaviour['backLunchTime']  >= time >= behaviour['lunchTime']:
 			timeActivity_matrix = [0, 0.05, 0, 1.0]
 		elif behaviour['leaveWorkTime'] >= time >= behaviour['backLunchTime']:
-			timeActivity_matrix = [0, 1.00, 0.10, 0.1]
+			timeActivity_matrix = [0, 1.00, 0.30, 0.1]
 		elif time >= behaviour['leaveWorkTime']:
 			timeActivity_matrix = [5, 0.30, 0.10, 0]
 		return timeActivity_matrix

@@ -83,9 +83,9 @@ class WorkerAgent(Agent):
 
         # Stress attributes initialization
         self.stress = 0
-        self.event_stress = 0.5
+        self.event_stress = random.randrange(0, 5)/10
         self.effective_fatigue = 0
-        self.time_pressure = 0.5
+        self.time_pressure = random.randrange(0, 5)/10
         self.productivity = 1
 
 
@@ -208,7 +208,7 @@ class WorkerAgent(Agent):
 
         # Calculate interval and do tasks
         # if self.state == 'name'
-        if self.model.timer.day_interval == 'work_time':
+        if self.state == 'working in my workplace':
 
             # Add temperature, humidity and noise contribution
             self.addAmbientContribution()
@@ -231,7 +231,7 @@ class WorkerAgent(Agent):
                     self.rest_at_work_hours += 1/60
                     self.rest()
 
-        elif self.model.timer.day_interval == 'overtime':
+        elif self.state == 'working in my workplace' and self.model.clock.clock > self.behaviour['leaveWorkTime']:
 
             # Add temperature, humidity, luminosity and noise contribution
             self.addAmbientContribution()
@@ -244,26 +244,27 @@ class WorkerAgent(Agent):
                 self.overtime_hours += 1/60
                 self.addOvertimeHoursContribution()
 
-        elif self.model.timer.day_interval == 'sleep_time':
-            self.rest()
-
-        elif self.model.timer.day_interval == 'free_time':
+        else:
             self.rest()
 
         #self.printTimePressure()
         #self.printEffectiveFatigue()
         #self.printTasksNumber()
         self.stress = min(1, (self.event_stress + self.time_pressure + self.effective_fatigue) / 3)
+        self.stress = max(0, self.stress)
         self.calculateProductivity()
 
         #self.printStress()
         #self.printProductivity()
         if self.creation != True:
             self.logStress()
+        if self.unique_id == 1:
+            print(self.stress)
+            print(self.state)
 
     def logStress(self):
     	#model.ramenScript.addAgentEmotion(self, self.stress)
-        model.ramenScript.addAgentEmotion(self, random.randrange(0, 10)/10, self.model.NStep)
+        model.ramenScript.addAgentEmotion(self, self.stress, self.model.NStep)
     
     def logTV(self, state):
         model.ramenScript.stateTV(state, self.model.NStep)
@@ -301,7 +302,10 @@ class WorkerAgent(Agent):
             self.emails_read += 1
 
     def rest(self):
-        self.addRestTimeContribution()
+        if self.state != 'leave':
+            self.addRestTimeContribution()
+        else:
+            self.addRestTimeContribution2()
 
     def addTask(self, task):
         self.tasks.append(task)
@@ -320,7 +324,7 @@ class WorkerAgent(Agent):
 
     def addOvertimeHoursContribution(self):
         wpmf = model_settings.overtime_contribution
-        self.effective_fatigue += wpmf/(wpmf+self.fatigue_tolerance)/general_settings.time_by_step
+        self.effective_fatigue += 5*(wpmf/(wpmf+self.fatigue_tolerance)/general_settings.time_by_step)
         if self.effective_fatigue > 1: self.effective_fatigue = 1
 
     def addNewEmailContribution(self):
@@ -329,8 +333,11 @@ class WorkerAgent(Agent):
         if self.effective_fatigue > 1: self.effective_fatigue = 1
 
     def addRestTimeContribution(self):
-        self.effective_fatigue -= model_settings.rest_time_contribution/10/general_settings.time_by_step
-        if self.effective_fatigue < 0: self.effective_fatigue = 0
+        self.effective_fatigue -= 400*(model_settings.rest_time_contribution/10/general_settings.time_by_step)
+    
+    def addRestTimeContribution2(self):
+        self.effective_fatigue -= 30*(model_settings.rest_time_contribution/10/general_settings.time_by_step)
+
 
     def addAmbientContribution(self):
 

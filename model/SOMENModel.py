@@ -122,7 +122,6 @@ class SOMENModel(Model):
                     if room.name.split(r".")[0] == room2.name.split(r".")[0]:
                         room2.light = light
         
-        print(self.lights)
         # Height and Width
         height = self.grid.height
         width = self.grid.width
@@ -417,8 +416,6 @@ class SOMENModel(Model):
         matrix_time_in_state = configuration.defineOccupancy.getTimeInState(agent, self.clock.clock)
         return matrix_time_in_state
 
-
-
     def sobaStep(self):
         aw = 0
         for agent in self.agents:
@@ -432,7 +429,7 @@ class SOMENModel(Model):
             self.day = self.day + 1
         self.NStep = self.NStep + 1
 
-        if self.NStep > 300:
+        if self.clock.clock > 20.00:
             model.ramenScript.generateJSON()
             while(True):
                 pass
