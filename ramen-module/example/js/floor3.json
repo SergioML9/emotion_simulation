@@ -1,0 +1,127 @@
+{
+	"floorplan": {
+		"corners": {
+			"a": {
+				"x": 0,
+				"y": -250
+			},
+			"b": {
+				"x": 300,
+				"y": -250
+			},
+			"c": {
+				"x": 600,
+				"y": -250
+			},
+			"d": {
+				"x": 0,
+				"y": 250
+			},
+			"e": {
+				"x": 300,
+				"y": 250
+			},
+			"f": {
+				"x": 600,
+				"y": 250
+			}
+		},
+		"walls": [
+			{
+				"corner1": "a",
+				"corner2": "c",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "https://blueprint-dev.s3.amazonaws.com/uploads/floor_wall_texture/file/wallmap_yellow.png",
+					"stretch": true,
+					"scale": null
+				}
+			},
+			{
+				"corner1": "c",
+				"corner2": "f",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "https://blueprint-dev.s3.amazonaws.com/uploads/floor_wall_texture/file/wallmap_yellow.png",
+					"stretch": true,
+					"scale": null
+				}
+			},
+			{
+				"corner1": "f",
+				"corner2": "d",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "https://blueprint-dev.s3.amazonaws.com/uploads/floor_wall_texture/file/wallmap_yellow.png",
+					"stretch": true,
+					"scale": null
+				}
+			},
+			{
+				"corner1": "d",
+				"corner2": "a",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "https://blueprint-dev.s3.amazonaws.com/uploads/floor_wall_texture/file/wallmap_yellow.png",
+					"stretch": true,
+					"scale": null
+				}
+			},
+			{
+				"corner1": "b",
+				"corner2": "e",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "https://blueprint-dev.s3.amazonaws.com/uploads/floor_wall_texture/file/wallmap_yellow.png",
+					"stretch": true,
+					"scale": null
+				}
+			}
+
+		],
+		"wallTextures": [],
+		"floorTextures": {},
+		"newFloorTextures": {
+			"11d25193-4411-fbbf-78cb-ae7c0283164b,254656bf-8a53-3987-c810-66b349f49b19,e7db8654-efe1-bda2-099a-70585874d8c0,edf0de13-df9f-cd6a-7d11-9bd13c36ce12": {
+				"url": "https://blueprint-dev.s3.amazonaws.com/uploads/floor_wall_texture/file/light_fine_wood.jpg",
+				"scale": 300
+			}
+		}
+	},
+	"items": [
+		{
+			"item_name": "Open Door",
+			"item_type": 7,
+			"model_url": "../models/js/open_door.js",
+			"xpos": 300,
+			"ypos": 110.5,
+			"zpos": 0,
+			"rotation": -1.5707963267948966,
+			"scale_x": 1.7003089598352215,
+			"scale_y": 0.997292171703541,
+			"scale_z": 0.999415040540576,
+			"fixed": false
+		}
+	]
+
+}

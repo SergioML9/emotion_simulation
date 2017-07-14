@@ -1,0 +1,926 @@
+{
+  "floorplan": {
+    "corners": {
+      "f90da5e3-9e0e-eba7-173d-eb0b071e838e": {
+        "x": 204.85099999999989,
+        "y": 289.052
+      },
+      "43dd51e1-a45e-2dca-3614-c547722a9025": {
+        "x": 674.2429999999999,
+        "y": -227.0759999999997
+      },
+      "e8b6370d-3dc8-784a-b3a9-8becbbcdc9f5": {
+        "x": 1118.7429999999997,
+        "y": 289.052
+      },
+      "13420b5a-27ba-cdfc-7b2c-838e4e7f0131": {
+        "x": 674.2429999999999,
+        "y": 289.052
+      },
+      "ff9801b3-3f49-ae2b-c2e4-a92587b7a794": {
+        "x": 204.85099999999989,
+        "y": -227.07599999999996
+      },
+      "17202c37-fdf0-22b1-ba7a-aaf1f7460e82": {
+        "x": 204.85099999999989,
+        "y": -613.1559999999998
+      },
+      "b220ddbf-4257-ab5d-b606-eade9b50be28": {
+        "x": 1118.7429999999997,
+        "y": -613.1559999999998
+      },
+      "c3e4e775-8afc-ea74-34ce-026763d6999d": {
+        "x": 1118.7429999999997,
+        "y": -227.0759999999997
+      }
+    },
+    "walls": [
+      {
+        "corner1": "ff9801b3-3f49-ae2b-c2e4-a92587b7a794",
+        "corner2": "f90da5e3-9e0e-eba7-173d-eb0b071e838e",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "f90da5e3-9e0e-eba7-173d-eb0b071e838e",
+        "corner2": "13420b5a-27ba-cdfc-7b2c-838e4e7f0131",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "13420b5a-27ba-cdfc-7b2c-838e4e7f0131",
+        "corner2": "43dd51e1-a45e-2dca-3614-c547722a9025",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "43dd51e1-a45e-2dca-3614-c547722a9025",
+        "corner2": "ff9801b3-3f49-ae2b-c2e4-a92587b7a794",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "43dd51e1-a45e-2dca-3614-c547722a9025",
+        "corner2": "c3e4e775-8afc-ea74-34ce-026763d6999d",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "c3e4e775-8afc-ea74-34ce-026763d6999d",
+        "corner2": "e8b6370d-3dc8-784a-b3a9-8becbbcdc9f5",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "e8b6370d-3dc8-784a-b3a9-8becbbcdc9f5",
+        "corner2": "13420b5a-27ba-cdfc-7b2c-838e4e7f0131",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "ff9801b3-3f49-ae2b-c2e4-a92587b7a794",
+        "corner2": "17202c37-fdf0-22b1-ba7a-aaf1f7460e82",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "17202c37-fdf0-22b1-ba7a-aaf1f7460e82",
+        "corner2": "b220ddbf-4257-ab5d-b606-eade9b50be28",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      },
+      {
+        "corner1": "b220ddbf-4257-ab5d-b606-eade9b50be28",
+        "corner2": "c3e4e775-8afc-ea74-34ce-026763d6999d",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      }
+    ],
+    "wallTextures": [],
+    "floorTextures": {},
+    "newFloorTextures": {}
+  },
+  "items": [
+    {
+      "item_name": "Open Door",
+      "item_type": 7,
+      "model_url": "models/js/open_door.js",
+      "xpos": 619.6929979248048,
+      "ypos": 110.800000297771,
+      "zpos": -226.57600402832009,
+      "rotation": -5.568128850167962e-16,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Open Door",
+      "item_type": 7,
+      "model_url": "models/js/open_door.js",
+      "xpos": 734.6872424240373,
+      "ypos": 110.800000297771,
+      "zpos": -226.5760040283203,
+      "rotation": 0,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Media Console - White",
+      "item_type": 1,
+      "model_url": "models/js/cb-clapboard_baked.js",
+      "xpos": 1084.1576862035463,
+      "ypos": 67.88999754395999,
+      "zpos": -419.29163965260034,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Red Chair",
+      "item_type": 1,
+      "model_url": "models/js/ik-ekero-orange_baked.js",
+      "xpos": 822.095625735504,
+      "ypos": 38.1,
+      "zpos": -420.8554310321422,
+      "rotation": 1.5707963267948966,
+      "scale_x": 2.2129606883116137,
+      "scale_y": 1.015936314878811,
+      "scale_z": 1.0080606533371652,
+      "fixed": false
+    },
+    {
+      "item_name": "Dresser - White",
+      "item_type": 1,
+      "model_url": "models/js/we-narrow6white_baked.js",
+      "xpos": 379.89804610476665,
+      "ypos": 43.18,
+      "zpos": -566.4147088949819,
+      "rotation": 0,
+      "scale_x": 1.7333333333333338,
+      "scale_y": 1.2125127163331142,
+      "scale_z": 1.2287246805315832,
+      "fixed": false
+    },
+    {
+      "item_name": "Speakers",
+      "item_type": 9,
+      "model_url": "models/js/speakers.json",
+      "xpos": 379.89804610476665,
+      "ypos": 88,
+      "zpos": -300.4147088949819,
+      "rotation": 3.14,
+      "scale_x": 25,
+      "scale_y": 25,
+      "scale_z": 25,
+      "fixed": false
+    },
+    {
+          "item_name": "Speakers",
+          "item_type": 9,
+          "model_url": "models/js/speakers.json",
+          "xpos": 399.89804610476665,
+          "ypos": 88,
+          "zpos": -200.4147088949819,
+          "rotation": 3.14,
+          "scale_x": 25,
+          "scale_y": 25,
+          "scale_z": 25,
+          "fixed": false
+        },
+        {
+              "item_name": "Speakers",
+              "item_type": 9,
+              "model_url": "models/js/speakers.json",
+              "xpos": 947,
+              "ypos": 88,
+              "zpos": -200.4147088949819,
+              "rotation": 3.14,
+              "scale_x": 25,
+              "scale_y": 25,
+              "scale_z": 25,
+              "fixed": false
+            },
+    {
+      "item_name": "Air",
+      "item_type": 2,
+      "model_url": "models/js/air.json",
+      "xpos": 379.89804610476665,
+      "ypos": 200,
+      "zpos": -592.4147088949819,
+      "rotation": 3.14,
+      "scale_x": 12.7333333333333338,
+      "scale_y": 12.2125127163331142,
+      "scale_z": 12.2287246805315832,
+      "fixed": false
+    },
+    {
+          "item_name": "Air",
+          "item_type": 2,
+          "model_url": "models/js/air.json",
+          "xpos": 229,
+          "ypos": 200,
+          "zpos": 0,
+          "rotation": 3.14,
+          "scale_x": 12.7333333333333338,
+          "scale_y": 12.2125127163331142,
+          "scale_z": 12.2287246805315832,
+          "fixed": false
+        },
+     {
+               "item_name": "Air",
+               "item_type": 2,
+               "model_url": "models/js/air.json",
+               "xpos": 690,
+               "ypos": 200,
+               "zpos": 0,
+               "rotation": 3.14,
+               "scale_x": 12.7333333333333338,
+               "scale_y": 12.2125127163331142,
+               "scale_z": 12.2287246805315832,
+               "fixed": false
+             },
+    {
+      "item_name": "Dining Table",
+      "item_type": 1,
+      "model_url": "models/js/cb-scholartable_baked.js",
+      "xpos": 351.2412093132988,
+      "ypos": 38.078950895925004,
+      "zpos": -308.57085889797406,
+      "rotation": 0,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 270.92471211599997,
+      "ypos": 39.47743068655714,
+      "zpos": -311.2351727798337,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Wooden Trunk",
+      "item_type": 1,
+      "model_url": "models/js/cb-tecs_baked.js",
+      "xpos": 413.0553339926961,
+      "ypos": 38.1,
+      "zpos": 164.9622997233974,
+      "rotation": 0,
+      "scale_x": 1.3371412026374319,
+      "scale_y": 1.661951900433178,
+      "scale_z": 2.0754279885570415,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 346.679574129168,
+      "ypos": 39.47743068655714,
+      "zpos": 237.21017435675023,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Bookshelf",
+      "item_type": 1,
+      "model_url": "models/js/cb-kendallbookcasewalnut_baked.js",
+      "xpos": 229.7630091470109,
+      "ypos": 92.71000000000001,
+      "zpos": 207.76189789793472,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1.441104837816894,
+      "scale_y": 1.0057878055343146,
+      "scale_z": 0.9977269632438435,
+      "fixed": false
+    },
+    {
+      "item_name": "Wooden Trunk",
+      "item_type": 1,
+      "model_url": "models/js/cb-tecs_baked.js",
+      "xpos": 473.85253727858975,
+      "ypos": 38.1,
+      "zpos": 165.07192528440638,
+      "rotation": 0,
+      "scale_x": 1.337141202637432,
+      "scale_y": 1.6619519004331773,
+      "scale_z": 2.0754279885570424,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 343.52625034852247,
+      "ypos": 39.47743068655714,
+      "zpos": 109.66486934478803,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Wooden Trunk",
+      "item_type": 1,
+      "model_url": "models/js/cb-tecs_baked.js",
+      "xpos": 409.03949699371907,
+      "ypos": 38.1,
+      "zpos": -166.91049433623152,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1.8385691536264692,
+      "scale_y": 1.6619519004331773,
+      "scale_z": 1.573676167147646,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 282.21359060755015,
+      "ypos": 39.47743068655714,
+      "zpos": -169.50142818422142,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 530.0160149919919,
+      "ypos": 39.47743068655714,
+      "zpos": -160.24594183014915,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Bookshelf",
+      "item_type": 1,
+      "model_url": "models/js/cb-kendallbookcasewalnut_baked.js",
+      "xpos": 647.9320413929963,
+      "ypos": 92.71000000000001,
+      "zpos": 111.95640305001135,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1.5114026347835714,
+      "scale_y": 1.0057878055343146,
+      "scale_z": 0.9977269632438435,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 531.0907513560121,
+      "ypos": 39.47743068655714,
+      "zpos": 113.16173578570387,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 527.1710419011102,
+      "ypos": 39.47743068655714,
+      "zpos": 229.13886381862474,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "GSI poster",
+      "item_type": 2,
+      "model_url": "models/js/gsi-poster.js",
+      "xpos": 879.6666388372114,
+      "ypos": 155.32016927005589,
+      "zpos": -606.9022555418744,
+      "rotation": 0,
+      "scale_x": 1.35,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+          "item_name": "GSI poster",
+          "item_type": 2,
+          "model_url": "models/js/sentiments_poster.js",
+          "xpos": 668,
+          "ypos": 155.32016927005589,
+          "zpos": -60,
+          "rotation": 0,
+          "scale_x": 1.90,
+          "scale_y": 1.5,
+          "scale_z": 1,
+          "fixed": false
+        },
+    {
+      "item_name": "Blue Chair",
+      "item_type": 1,
+      "model_url": "models/js/ik-ekero-blue_baked.js",
+      "xpos": 970.2068478320656,
+      "ypos": 38.1,
+      "zpos": -565.9445666714837,
+      "rotation": 0,
+      "scale_x": 2.0682857142857145,
+      "scale_y": 1.0159999899719716,
+      "scale_z": 1.0090410958904108,
+      "fixed": false
+    },
+    {
+      "item_name": "Open Door",
+      "item_type": 7,
+      "model_url": "models/js/open_door.js",
+      "xpos": 205.3509979248047,
+      "ypos": 110.800000297771,
+      "zpos": -447.9583367717837,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Bookshelf",
+      "item_type": 1,
+      "model_url": "models/js/cb-kendallbookcasewalnut_baked.js",
+      "xpos": 647.2445587602394,
+      "ypos": 92.71000000000001,
+      "zpos": 227.8355399147833,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1.5114026347835714,
+      "scale_y": 1.0057878055343146,
+      "scale_z": 0.9977269632438435,
+      "fixed": false
+    },
+    {
+      "item_name": "Wooden Trunk",
+      "item_type": 1,
+      "model_url": "models/js/cb-tecs_baked.js",
+      "xpos": 870.6214005733275,
+      "ypos": 38.1,
+      "zpos": 165.03266436840624,
+      "rotation": 0,
+      "scale_x": 1.3371412026374323,
+      "scale_y": 1.6619519004331773,
+      "scale_z": 2.075427988557042,
+      "fixed": false
+    },
+    {
+      "item_name": "Wooden Trunk",
+      "item_type": 1,
+      "model_url": "models/js/cb-tecs_baked.js",
+      "xpos": 931.3042632449622,
+      "ypos": 38.1,
+      "zpos": 164.53128665355916,
+      "rotation": 0,
+      "scale_x": 1.337141202637432,
+      "scale_y": 1.6619519004331773,
+      "scale_z": 2.075427988557042,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 805.8196178698399,
+      "ypos": 39.47743068655714,
+      "zpos": 110.52794660370313,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 805.8023843436191,
+      "ypos": 39.47743068655714,
+      "zpos": 231.09183117134154,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 989.6269764597639,
+      "ypos": 39.47743068655714,
+      "zpos": 237.5160295573315,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 995.0587883499027,
+      "ypos": 39.47743068655714,
+      "zpos": 108.68236405531685,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Wooden Trunk",
+      "item_type": 1,
+      "model_url": "models/js/cb-tecs_baked.js",
+      "xpos": 947.9146738261069,
+      "ypos": 38.1,
+      "zpos": -170.53892322202876,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1.8385691536264694,
+      "scale_y": 1.6619519004331773,
+      "scale_z": 1.573676167147647,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 827.3772555565179,
+      "ypos": 39.47743068655714,
+      "zpos": -175.02064174661325,
+      "rotation": 1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Chair",
+      "item_type": 1,
+      "model_url": "models/js/gus-churchchair-whiteoak.js",
+      "xpos": 1074.79870076495,
+      "ypos": 39.47743068655714,
+      "zpos": -167.0070628439716,
+      "rotation": -1.5707963267948966,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Window",
+      "item_type": 3,
+      "model_url": "models/js/whitewindow.js",
+      "xpos": 445,
+      "ypos": 142.05999324017057,
+      "zpos": 290,
+      "rotation": 0,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Window",
+      "item_type": 3,
+      "model_url": "models/js/whitewindow.js",
+      "xpos": 902,
+      "ypos": 142.05999324017057,
+      "zpos": 290,
+      "rotation": 0,
+      "scale_x": 1,
+      "scale_y": 1,
+      "scale_z": 1,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 400,
+      "ypos": 120,
+      "zpos": -217,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 400,
+      "ypos": 120,
+      "zpos": -239,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 400,
+      "ypos": 120,
+      "zpos": -606.9022555418744,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 895,
+      "ypos": 95,
+      "zpos": -606.9022555418744,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 895,
+      "ypos": 120,
+      "zpos": -239,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 895,
+      "ypos": 120,
+      "zpos": -217,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 1110,
+      "ypos": 120,
+      "zpos": 40,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 1110,
+      "ypos": 145,
+      "zpos": -419.29163965260034,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 210,
+      "ypos": 120,
+      "zpos": 40,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 210,
+      "ypos": 120,
+      "zpos": -312,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 665,
+      "ypos": 120,
+      "zpos": 40,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 680,
+      "ypos": 120,
+      "zpos": 40,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 800,
+      "ypos": 120,
+      "zpos": 280,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Beacon",
+      "item_type": 2,
+      "model_url": "models/js/beacon_wall.json",
+      "xpos": 345,
+      "ypos": 120,
+      "zpos": 280,
+      "rotation": 0,
+      "scale_x": 4,
+      "scale_y": 4,
+      "scale_z": 4,
+      "fixed": false
+    },
+    {
+      "item_name": "Camera",
+      "item_type": 2,
+      "model_url": "models/js/camera3.json",
+      "xpos": 400,
+      "ypos": 200,
+      "zpos": -200,
+      "rotation": 0,
+      "scale_x": 10,
+      "scale_y": 10,
+      "scale_z": 10,
+      "fixed": false
+    },
+    {
+      "item_name": "Camera",
+      "item_type": 2,
+      "model_url": "models/js/camera3.json",
+      "xpos": 895,
+      "ypos": 200,
+      "zpos": -200,
+      "rotation": 0,
+      "scale_x": 10,
+      "scale_y": 10,
+      "scale_z": 10,
+      "fixed": false
+    },
+    {
+      "item_name": "Camera",
+      "item_type": 2,
+      "model_url": "models/js/camera3.json",
+      "xpos": 1088,
+      "ypos": 200,
+      "zpos": -520,
+      "rotation": 0,
+      "scale_x": 10,
+      "scale_y": 10,
+      "scale_z": 10,
+      "fixed": false
+    }
+  ]
+}

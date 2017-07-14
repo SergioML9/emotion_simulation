@@ -1,0 +1,159 @@
+{
+  "type": 0,
+  "steps": [
+    [
+      {
+        "agent": 0,
+        "position": "Office1",
+        "sentiment": "happiness"
+      },
+      {
+        "agent": 1,
+        "position": "Office2",
+        "sentiment": "happiness"
+      },
+      {
+        "agent": 2,
+        "position": "Office3",
+        "sentiment": "happiness"
+      },
+      {
+        "agent": 3,
+        "position": "Office4",
+        "sentiment": "happiness"
+      },
+      {
+        "agent": 4,
+        "position": "Office6",
+        "sentiment": "happiness"
+      },
+      {
+      "agent": 5,
+      "position": "Office7",
+      "sentiment": "happiness"
+    },
+      {
+        "agent": 6,
+        "position": "Lab1",
+        "sentiment": "happiness"
+      },
+      {
+        "agent": 7,
+        "position": "Lab3",
+        "sentiment": "happiness",
+        "rotation": 3.14
+      }
+    ],
+    [
+      {
+        "agent":8,
+        "position": "Lab2",
+        "sentiment": "sadness",
+        "rotation": 1.57
+
+      },
+      {
+        "agent": 0,
+        "moveTo": "C.2",
+        "toStep": 4,
+        "rotation": 3.14
+      },
+      {
+        "agent": 1,
+        "moveTo": "C.3",
+        "toStep": 4,
+        "rotation": 1.57,
+        "outBuilding": true
+      },
+
+      {
+        "agent": 2,
+        "moveTo": "C.4",
+        "toStep": 4
+      },
+
+      {
+        "agent": 3,
+        "moveTo": "C.5",
+        "toStep": 4
+      },
+      {
+        "agent": 4,
+        "moveTo": "C.7",
+        "toStep": 4
+      },
+
+      {
+        "agent": 5,
+        "moveTo": "C.8",
+        "toStep": 4
+      },
+      {
+        "agent": 6,
+        "moveTo": "CI.12",
+        "toStep": 4
+      },
+
+      {
+        "fire":true,
+        "position": {"x":4927 ,"y": -557}
+      },
+      {
+        "fire":true,
+        "position": {"x":5057 ,"y": -557}
+      },
+      {
+        "fire":true,
+        "position": {"x":5187 ,"y": -557}
+      },
+      {
+        "fire":true,
+        "position": {"x":4927 ,"y": -427}
+      },
+      {
+        "fire":true,
+        "position": {"x":5057 ,"y": -427}
+      },
+      {
+        "fire":true,
+        "position": {"x":5187 ,"y": -427}
+      }],
+    [],
+    [],
+    [
+
+
+      {
+        "agent": 2,
+        "moveTo": "C.3",
+        "toStep": 8
+      },
+
+      {
+        "agent": 3,
+        "moveTo": "C.4",
+        "toStep": 8
+      },
+      {
+        "agent": 4,
+        "moveTo": "C.8",
+        "toStep": 8
+      },
+
+      {
+        "agent": 5,
+        "moveTo": "C.9",
+        "toStep": 8
+      },
+      {
+        "agent": 6,
+        "moveTo": "CI.11",
+        "toStep": 8
+
+      }],
+    [],
+    [],
+    [],
+    []
+  ]
+}

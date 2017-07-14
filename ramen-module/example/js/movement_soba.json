@@ -1,0 +1,443 @@
+{
+  "type": 0,
+  "steps": [
+    [
+      {
+        "agent": 0,
+        "position": "Office1"
+      },
+      {
+        "agent": 1,
+        "position": "outBuilding"
+      },
+      {
+        "agent": 2,
+        "position": "Office8"
+      },
+      {
+        "agent": 3,
+        "position": "Office2"
+      },
+      {
+        "agent": 4,
+        "position": "Lab1",
+        "rotation": 3.14
+      },
+      {
+        "agent": 5,
+        "position": "Lab2",
+        "rotation": 3.14
+      },
+      {
+        "agent": 6,
+        "position": "Office10"
+      }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Office3"
+      },
+      {
+        "light": false,
+        "room": "Office4"
+      },
+      {
+        "light": false,
+        "room": "Office5"
+      },
+      {
+        "light": false,
+        "room": "Office6"
+      },
+      {
+        "light": false,
+        "room": "Office7"
+      },
+      {
+        "light": false,
+        "room": "Office9"
+      },
+      {
+        "light": false,
+        "room": "Office11"
+      },
+      {
+        "light": false,
+        "room": "Office12"
+      },
+      {
+        "light": false,
+        "room": "Office13"
+      },
+      {
+        "light": false,
+        "room": "Office13"
+      },
+      {
+        "light": false,
+        "room": "Office14"
+      },
+      {
+        "light": false,
+        "room": "Lab3"
+      },
+      {
+        "light": false,
+        "room": "Lab4"
+      },
+      {
+      "light": false,
+      "room": "Lab5"
+    },
+
+      {
+        "agent": 1,
+        "moveTo": "Hall.1",
+        "toStep": 6
+      },
+      {
+        "agent": 6,
+        "moveTo": "C.11",
+        "toStep": 5
+      }
+
+    ],
+    [{
+      "agent": 4,
+      "moveTo": "CI.12",
+      "toStep": 4
+    }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Lab1"
+      }
+
+    ],
+    [
+
+      {
+        "light": false,
+        "room": "Office10"
+      },
+      {
+        "agent": 4,
+        "moveTo": "CI.3",
+        "toStep": 8
+      }
+    ,
+      {
+        "agent": 7,
+        "position": "outBuilding"
+      }
+    ],
+    [
+      {
+        "agent": 5,
+        "moveTo": "CI.2",
+        "toStep": 8
+      },
+      {
+        "agent": 7,
+        "moveTo": "Hall.1",
+        "toStep": 9
+      },
+      {
+        "agent": 6,
+        "moveTo": "Lab12",
+        "toStep": 10
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "C.2",
+        "toStep": 8
+      },
+      {
+        "agent": 1,
+        "moveTo": "Hall.2",
+        "toStep": 10
+      },
+      {
+        "agent": 2,
+        "moveTo": "C.9",
+        "toStep": 9
+      }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Lab2"
+      },
+      {
+        "light": false,
+        "room": "Office1"
+      }
+    ],
+    [
+      {
+        "agent": 5,
+        "moveTo": "CI.12",
+        "toStep": 10
+      },
+      {
+        "agent": 4,
+        "moveTo": "Lab3",
+        "toStep": 10
+      },
+      {
+        "agent": 0,
+        "moveTo": "C.6",
+        "toStep": 17
+      },
+      {
+        "light": false,
+        "room": "Office8"
+      }
+    ],
+    [
+      {
+        "light": true,
+        "room": "Lab3"
+      },
+      {
+        "agent": 2,
+        "moveTo": "C.13",
+        "toStep": 18
+      },
+      {
+        "agent": 7,
+        "moveTo": "Restroom",
+        "toStep": 14
+      }
+    ],
+    [
+      {
+        "agent": 5,
+        "moveTo": "C.2",
+        "toStep": 14
+      },
+      {
+        "agent": 1,
+        "moveTo": "Hall.3",
+        "toStep": 13
+      },
+      {
+        "agent": 6,
+        "moveTo": "Lab14.1",
+        "toStep": 15
+      }
+    ],
+    [
+
+    ],
+    [
+
+    ],
+    [
+
+      {
+        "agent": 1,
+        "moveTo": "C.1",
+        "toStep": 16
+      }
+    ],
+    [{
+      "agent": 5,
+      "moveTo": "Office1",
+      "toStep": 16
+    }
+    ],
+    [
+      {
+        "light": true,
+        "room": "Office1"
+      }
+    ],
+    [
+      {
+        "agent": 1,
+        "moveTo": "C.5",
+        "toStep": 22
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "Office5",
+        "toStep": 20
+      }
+    ],
+    [
+      {
+        "light": true,
+        "room": "Office5"
+      },
+
+      {
+        "agent": 2,
+        "moveTo": "Lab15.2",
+        "toStep": 23
+      }
+
+    ],
+    [],
+    [],
+    [
+
+    ],
+    [
+
+      {
+        "agent": 1,
+        "moveTo": "Office4",
+        "toStep": 24
+      }
+    ],
+    [],
+    [
+      {
+        "agent": 7,
+        "moveTo": "Hall.1",
+        "toStep": 30
+      },
+      {
+        "agent": 5,
+        "moveTo": "CI.12",
+        "toStep": 28
+      }
+    ],
+    [],
+    [
+
+    ],
+    [],
+    [
+      {
+        "agent": 5,
+        "moveTo": "C.2",
+        "toStep": 32
+      }
+    ],
+    [],
+    [
+      {
+        "agent": 0,
+        "moveTo": "C.6",
+        "toStep": 32
+      },
+      {
+        "agent": 7,
+        "moveTo": "Hall.3",
+        "toStep": 38
+      }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Office5"
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "C.2",
+        "toStep": 39
+      },
+      {
+        "agent": 5,
+        "moveTo": "Hall.2",
+        "toStep": 40
+      }
+    ],
+    [
+      {
+        "agent": 2,
+        "moveTo": "C.13",
+        "toStep": 38
+      }
+    ],
+    [],
+    [],
+    [
+      {
+        "light": false,
+        "room": "Lab15.1"
+      }
+    ],
+    [],
+    [
+      {
+        "agent": 2,
+        "moveTo": "C.14",
+        "toStep": 41
+      },
+      {
+        "agent": 7,
+        "moveTo": "C.13",
+        "toStep": 65
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "Office1",
+        "toStep": 41
+      }
+    ],
+    [
+      {
+        "light": true,
+        "room": "Office1"
+      },
+      {
+        "agent": 5,
+        "moveTo": "outBuilding",
+        "toStep": 48
+      }
+    ],
+    [
+      {
+        "agent": 2,
+        "moveTo": "Office13",
+        "toStep": 43
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "agent": 7,
+        "moveTo": "Office12",
+        "toStep": 69
+      }
+    ],
+    [],
+    [],
+    []
+  ]
+}

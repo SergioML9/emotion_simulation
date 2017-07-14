@@ -1,0 +1,34 @@
+{
+  "floorplan": {
+    "corners": {
+      "a": {
+      
+      }
+    },
+    "walls": [
+      {
+        "corner1": "a",
+        "corner2": "a",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 0
+        }
+      }
+    ],
+    "wallTextures": [],
+    "floorTextures": {},
+    "newFloorTextures": {}
+  },
+  "items": [
+    {
+
+  }
+
+]
+}

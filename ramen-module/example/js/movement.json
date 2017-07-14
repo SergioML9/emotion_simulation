@@ -1,0 +1,376 @@
+{
+  "type": 0,
+  "steps": [
+    [
+      {
+        "agent": 0,
+        "position": "Office1",
+        "sentiment": "sadness"
+      },
+      {
+        "agent": 1,
+        "position": "outBuilding",
+        "sentiment": "happiness"
+      },
+      {
+        "agent": 2,
+        "position": "Office8",
+        "sentiment": "surprise"
+      },
+      {
+        "agent": 3,
+        "position": "Office2",
+        "sentiment": "surprise"
+      },
+      {
+        "agent": 4,
+        "position": "Lab1",
+        "sentiment": "fear"
+      },
+      {
+        "agent": 5,
+        "position": "outBuilding",
+        "sentiment": "disgust"
+      },
+      {
+        "agent": 6,
+        "position": "Lab2",
+        "sentiment": "sadness"
+      },
+      {
+        "agent": 7,
+        "position": "Office10",
+        "sentiment": "happiness"
+      }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Office3"
+      },
+      {
+        "light": false,
+        "room": "Office4"
+      },
+      {
+        "light": false,
+        "room": "Office5"
+      },
+      {
+        "agent": 1,
+        "moveTo": "Hall.1",
+        "toStep": 6
+      },
+      {
+        "agent": 7,
+        "moveTo": "C.11",
+        "toStep": 5
+      },
+      {
+        "video": true,
+        "room": "Office2"
+      }
+    ],
+    [
+
+        ],
+    [
+      {
+        "agent": 1,
+        "sentiment": "anger"
+      }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Office10"
+      }
+    ],
+    [
+     {   "fire": true,
+         "position":{"x": 5480, "y":-380}
+            },
+      {
+        "agent": 5,
+        "moveTo": "Hall.1",
+        "toStep": 9
+      },
+      {
+        "agent": 7,
+        "moveTo": "Lab12",
+        "toStep": 10
+      }
+    ],
+    [
+      {
+        "agent": 1,
+        "moveTo": "Hall.2",
+        "toStep": 10
+      },
+      {
+        "agent": 2,
+        "moveTo": "C.9",
+        "toStep": 9
+      }
+    ],
+    [],
+    [
+      {
+        "light": false,
+        "room": "Office8"
+      }
+    ],
+    [
+      {
+        "agent": 2,
+        "moveTo": "C.13",
+        "toStep": 18
+      },
+      {
+        "agent": 5,
+        "moveTo": "Restroom",
+        "toStep": 14
+      }
+    ],
+    [
+      {
+        "agent": 1,
+        "moveTo": "Hall.3",
+        "toStep": 13
+      },
+      {
+        "agent": 7,
+        "moveTo": "Lab14.1",
+        "toStep": 15
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "C.2",
+        "toStep": 13
+      }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Office1"
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "C.6",
+        "toStep": 18
+      },
+      {
+        "agent": 1,
+        "moveTo": "C.1",
+        "toStep": 16
+      }
+    ],
+    [],
+    [],
+    [
+      {
+        "agent": 1,
+        "moveTo": "C.5",
+        "toStep": 22
+      },
+      {
+        "agent": 4,
+        "moveTo": "CI.12",
+        "toStep": 18
+      }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Lab1"
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "Office5",
+        "toStep": 21
+      },
+      {
+        "agent": 2,
+        "moveTo": "Lab15.2",
+        "toStep": 23
+      },
+      {
+        "agent": 4,
+        "moveTo": "CI.3",
+        "toStep": 22
+      }
+    ],
+    [],
+    [],
+    [
+      {
+        "agent": 6,
+        "moveTo": "CI.2",
+        "toStep": 24
+      }
+    ],
+    [
+      {
+        "agent": 1,
+        "moveTo": "Office4",
+        "toStep": 24
+      },
+      {
+        "agent": 4,
+        "moveTo": "Lab3",
+        "toStep": 24
+      }
+    ],
+    [],
+    [
+      {
+        "agent": 5,
+        "moveTo": "Hall.1",
+        "toStep": 30
+      },
+      {
+        "agent": 6,
+        "moveTo": "CI.12",
+        "toStep": 28
+      }
+    ],
+    [],
+    [
+      {
+        "agent": 5,
+        "sentiment": "happiness"
+      }
+    ],
+    [],
+    [
+      {
+        "agent": 6,
+        "moveTo": "C.2",
+        "toStep": 32
+      }
+    ],
+    [],
+    [
+      {
+        "agent": 0,
+        "moveTo": "C.6",
+        "toStep": 32
+      },
+      {
+        "agent": 5,
+        "moveTo": "Hall.3",
+        "toStep": 38
+      }
+    ],
+    [
+      {
+        "light": false,
+        "room": "Office5"
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "C.2",
+        "toStep": 39
+      },
+      {
+        "agent": 6,
+        "moveTo": "Hall.2",
+        "toStep": 40
+      }
+    ],
+    [
+      {
+        "agent": 2,
+        "moveTo": "C.13",
+        "toStep": 38
+      }
+    ],
+    [],
+    [],
+    [
+      {
+        "light": false,
+        "room": "Lab15.1"
+      }
+    ],
+    [],
+    [
+      {
+        "agent": 2,
+        "moveTo": "C.14",
+        "toStep": 41
+      },
+      {
+        "agent": 5,
+        "moveTo": "C.13",
+        "toStep": 65
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": "Office1",
+        "toStep": 41
+      }
+    ],
+    [
+      {
+        "light": true,
+        "room": "Office1"
+      },
+      {
+        "agent": 6,
+        "moveTo": "outBuilding",
+        "toStep": 48
+      }
+    ],
+    [
+      {
+        "agent": 2,
+        "moveTo": "Office13",
+        "toStep": 43
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "agent": 5,
+        "moveTo": "Office12",
+        "toStep": 69
+      }
+    ],
+    [],
+    [],
+    []
+  ]
+}

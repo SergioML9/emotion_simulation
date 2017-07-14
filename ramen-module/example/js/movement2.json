@@ -1,0 +1,166 @@
+{
+  "type": 1,
+  "steps": [
+    [
+      {
+        "agent": 0,
+        "position": {"x": 250, "y": -447},
+        "sentiment": "happiness"
+      }
+    ],
+    [
+      {
+        "agent": 0,
+        "moveTo": {"x": 700, "y": -290},
+        "toStep": 5
+      }
+
+    ],
+    [],
+    [],
+    [{
+      "agent": 1,
+      "position": {"x": 250, "y": -447},
+      "sentiment": "happiness"
+    }],
+    [ {
+      "agent": 0,
+      "moveTo": {"x": 600, "y": 220},
+      "toStep": 10
+    },
+      {
+        "agent": 1,
+        "moveTo": {"x": 650, "y": -290},
+        "toStep": 10
+      }
+    ],
+    [],
+    [{
+      "agent": 2,
+      "position": {"x": 250, "y": -447},
+      "sentiment": "happiness"
+    }],
+    [{
+      "agent": 2,
+      "moveTo": {"x": 700, "y": -290},
+      "toStep": 17
+    }],
+    [],
+    [{
+      "agent": 1,
+      "moveTo": {"x": 600, "y": 100},
+      "toStep": 15
+    }],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "agent": 2,
+        "moveTo": {"x": 720, "y": 220},
+        "toStep": 23
+      }
+    ],
+    [
+      {
+        "agent": 1,
+        "sentiment": "anger"
+      }
+    ],
+    [{
+      "agent": 1,
+      "moveTo": {"x": 650, "y": -290},
+      "toStep": 23
+    }],
+    [],
+    [],
+    [],
+    [{
+      "agent": 1,
+      "moveTo": {"x": 740, "y": -420},
+      "toStep": 26
+    }],
+    [],
+    [],
+    [{
+      "video": true,
+      "room": "Hall.1"
+    },{
+      "agent": 2,
+      "sentiment": "anger"
+    }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [{
+      "agent": 2,
+      "moveTo": {"x": 718, "y": -300},
+      "toStep": 37
+    }],
+    [{
+      "agent": 1,
+      "sentiment": "surprise"
+    }],
+    [{
+      "agent": 0,
+      "sentiment": "sadness"
+    }],
+    [],
+    [],
+    [
+      {
+        "light":false,
+        "room": "Lab1"
+      }
+    ],
+    [{
+      "agent": 2,
+      "moveTo": {"x": 725, "y": -320},
+      "toStep": 38
+    }],
+    [],
+    [],
+    [{
+      "agent": 1,
+      "moveTo": {"x": 620, "y": -290},
+      "toStep": 44
+    }],
+    [],
+    [],
+    [{
+      "agent": 1,
+      "moveTo":  {"x": 600, "y": 100},
+      "toStep": 48
+    }],
+    [],
+    [],
+    [],
+    [],
+    [{
+      "agent": 0,
+      "sentiment": "happiness"
+    }],
+    [{
+      "agent": 2,
+      "sentiment": "happiness"
+    }],
+    [],
+    [],
+    [{
+      "agent": 2,
+      "moveTo": {"x": 720, "y": 220},
+      "toStep": 58
+    }],
+    [],
+    [{
+      "light": true,
+      "room": "Lab1"
+    }]
+
+  ]
+}

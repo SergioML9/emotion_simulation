@@ -41,6 +41,6 @@ def stateTV(state, step):
 def generateJSON():
 	data = {"type":0, "steps": steps}
 	print(data)
-	with open('ramen/example/js/lab_move.json', 'w') as outfile:
+	with open('ramen-module/example/js/lab_move.json', 'w') as outfile:
 		json.dump(data, outfile)
 		outfile.close()

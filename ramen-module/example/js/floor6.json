@@ -1,0 +1,140 @@
+{
+	"floorplan": {
+		"corners": {
+			"C1": {
+				"x": 0,
+				"y": 0
+			},
+			"C2": {
+				"x": 0,
+				"y": 833.44
+			},
+			"C3": {
+				"x": 1358.59,
+				"y": 0
+			},
+			"C4": {
+				"x": 1358.59,
+				"y": 833.44
+			},
+			"C5": {
+				"x": 0,
+				"y": 1251.08
+			},
+			"C6": {
+				"x": 836.2,
+				"y": 1251.08
+			},
+			"C7": {
+				"x": 836.2,
+				"y": 833.44
+			}
+		},
+		"walls": [
+			{
+				"corner1": "C1",
+				"corner2": "C2",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				}
+			},
+			{
+				"corner1": "C1",
+				"corner2": "C3",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				}
+			},
+			{
+				"corner1": "C3",
+				"corner2": "C4",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				}
+			},
+			{
+				"corner1": "C4",
+				"corner2": "C2",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				}
+			},
+			{
+				"corner1": "C2",
+				"corner2": "C5",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				}
+			},
+			{
+				"corner1": "C5",
+				"corner2": "C6",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				}
+			},
+			{
+				"corner1": "C6",
+				"corner2": "C7",
+				"frontTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				},
+				"backTexture": {
+					"url": "rooms/textures/wallmap.png",
+					"stretch": true,
+					"scale": 0
+				}
+			}
+
+		],
+		"wallTextures": [],
+		"floorTextures": {},
+		"newFloorTextures": {}
+	},
+	"items": [
+	]
+}

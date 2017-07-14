@@ -1,0 +1,15 @@
+git clone 
+
+sudo apt-get install nodejs-legacy 
+
+sudo npm install
+
+sudo npm install grunt-cli
+
+grunt
+
+cd example
+
+python -m http.server
+
+localhost:8000
