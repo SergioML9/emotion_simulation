@@ -28,7 +28,6 @@ def init():
     {'name':'Lab2.7', 'type' : 'lab', 'measures': {'dx':1, 'dy':3.7}, 'conectedTo': {'L':'Lab2.5', 'R':'Lab2.8'}},
     {'name':'Lab2.8', 'type' : 'lab', 'measures': {'dx':1, 'dy':3.7}, 'conectedTo': {'L':'Lab2.7'}},
 
-
     {'name':'outBuilding', 'type' : 'out'}
 
     ]

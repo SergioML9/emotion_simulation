@@ -1,6 +1,6 @@
 import json
 
-steps = [[] for _ in range(50000)]
+steps = [[] for _ in range(500000)]
 
 steps[0].append({"light":'low', "room": 'Hall.1'})
 steps[0].append({"light":'low', "room": 'Lab1.1'})
@@ -11,11 +11,11 @@ def addAgentMovement(agent, room, stepStart, stepEnd):
 	steps[stepStart+1].append({"agent":agent.unique_id, "moveTo": room, "toStep": stepEnd+1})
 
 def createAgent(agent, step):
-	steps[step+1].append({ "agent": agent.unique_id, "position": "entrance"})
+	steps[step].append({ "agent": agent.unique_id, "position": "entrance"})
 
 def addAgentEmotion(agent, stressAux, step):
 	sentiment = ''
-	stress = 2*stressAux
+	stress = stressAux*2
 	if stress < 0.2:
 		sentiment = 'surprise'
 	elif 0.2 < stress < 0.4:

@@ -15,7 +15,7 @@ def init():
 		{'name':'leave', 'position': 'outBuilding'}, #initial state (the first)
 		{'name':'working in my workplace', 'position': {'Lab1.3': 1, 'Lab1.4': 1, 'Lab1.6': 1, 'Lab1.7': 1, 'Lab1.8': 1, 'Lab2.3': 1, 'Lab2.4': 1, 'Lab2.6': 1, 'Lab2.7': 1, 'Lab2.8': 1}},
 		{'name':'resting', 'position':'Hall.4'},
-		{'name':'lunch', 'position': 'outLab'}
+		{'name':'lunch', 'position': 'outBuilding'}
 	]
 
 	#Define initial markov matrix
