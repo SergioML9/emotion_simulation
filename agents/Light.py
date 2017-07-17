@@ -60,7 +60,7 @@ class Light(Agent):
         model.ramenScript.addLightState(self.room, 'medium', self.model.NStep)
 
     def set_medium(self):
-        model.ramenScript.addLightState(self.room, 'medium', self.model.NStep)
+        model.ramenScript.addLightState(self.room, 'high', self.model.NStep)
 
     def set_high(self):
         model.ramenScript.addLightState(self.room, 'high', self.model.NStep)

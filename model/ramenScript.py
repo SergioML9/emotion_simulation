@@ -15,20 +15,21 @@ def createAgent(agent, step):
 
 def addAgentEmotion(agent, stressAux, step):
 	sentiment = ''
-	stress = stressAux*2
-	if stress < 0.2:
+	stress = stressAux
+	if stress < 0.1:
 		sentiment = 'surprise'
-	elif 0.2 < stress < 0.4:
+	elif 0.1 < stress < 0.2:
 		sentiment = 'sadness'
-	elif 0.4 < stress < 0.6:
+	elif 0.2 < stress < 0.3:
 		sentiment = 'fear'
-	elif 0.8 < stress < 0.8:
+	elif 0.3 < stress < 0.4:
 		sentiment = 'happiness'
-	elif 0.8 < stress:
+	elif 0.4 < stress:
 		sentiment = 'anger'
 	else:
 		sentiment = 'happiness'
 	steps[step].append({"agent":agent.unique_id, "sentiment": sentiment})
+	print(agent.unique_id, agent.state, sentiment)
 
 def addLightState(room, state, step):
 	steps[step+2].append({"light":state, "room": room.name})

@@ -7,8 +7,8 @@ def init():
 
     {'name':'Hall.1', 'entrance':'', 'type':'hall', 'conectedTo': {'U':'Hall.2', 'D':'outBuilding'}, 'measures': {'dx':3, 'dy':2}},
     {'name':'Hall.2', 'type':'hall', 'conectedTo': {'U':'Hall.3', 'R':'Lab1.1'}, 'measures': {'dx':3, 'dy':2.5}},
-    {'name':'Hall.3', 'entrance':'', 'type':'hall', 'conectedTo': {'U':'Hall.4', 'R':'Lab2.1'}, 'measures': {'dx':3, 'dy':0.75}},
-    {'name':'Hall.4', 'entrance':'', 'type':'hall', 'conectedTo': {'D':'Hall.3'}, 'measures': {'dx':3, 'dy':0.75}},
+    {'name':'Hall.3', 'entrance':'', 'type':'hall', 'conectedTo': {'U':'Hall.4', 'R':'Lab2.1'}, 'measures': {'dx':1.3, 'dy':0.55}},
+    {'name':'Hall.4', 'entrance':'', 'type':'hall', 'conectedTo': {'D':'Hall.3'}, 'measures': {'dx':3, 'dy':0.5}},
 
     {'name':'Lab1.1', 'type' : 'lab', 'measures': {'dx':1.85, 'dy':3.7}, 'conectedTo': {'L':'Hall.2', 'R':'Lab1.2'}},
     {'name':'Lab1.2', 'type' : 'lab', 'measures': {'dx':1, 'dy':3.7}, 'conectedTo': {'L':'Lab1.1', 'R':'Lab1.3', 'D':'Lab1.5'}},

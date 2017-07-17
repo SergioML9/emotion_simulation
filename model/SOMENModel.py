@@ -429,7 +429,7 @@ class SOMENModel(Model):
             self.day = self.day + 1
         self.NStep = self.NStep + 1
 
-        if self.clock.clock > 20.00:
+        if self.clock.clock > 17:
             model.ramenScript.generateJSON()
             while(True):
                 pass

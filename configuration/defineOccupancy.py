@@ -21,7 +21,7 @@ def init():
 	#Define initial markov matrix
 	markov_matrixWorkers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
-	controlBehaviourWorkers = {'arriveTime': 9.00, 'lunchTime': 13.00, 'backLunchTime': 14.00, 'leaveWorkTime': 17.30}
+	controlBehaviourWorkers = {'arriveTime': 9.00, 'lunchTime': 15.00, 'backLunchTime': 16.00, 'leaveWorkTime': 19.00}
 
 	WorkersOccupants = {'type':'workers' , 'N':NWorkers, 'states': statesWorkers ,'matrix': markov_matrixWorkers, 'lifeWay': controlBehaviourWorkers}
 	
@@ -35,11 +35,11 @@ def returnMatrix(agent, time):
 		if time < behaviour['arriveTime']:
 			new_matrix = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 		elif behaviour['lunchTime'] >= time >= behaviour['arriveTime']:
-			new_matrix = [[55, 35, 0, 0], [0, 75, 35, 0], [0, 100, 0, 0], [0, 0, 0, 0, 0]]
+			new_matrix = [[55, 35, 0, 0], [0, 50, 50, 0], [0, 100, 0, 0], [0, 0, 0, 0, 0]]
 		elif behaviour['backLunchTime']  >= time >= behaviour['lunchTime']:
 			new_matrix = [[0, 0, 0, 0], [0, 70, 0, 30], [0, 100, 0, 0], [0, 0, 0, 0]]
 		elif behaviour['leaveWorkTime'] >= time >= behaviour['backLunchTime']:
-			new_matrix = [[0, 0, 0, 0], [0, 75, 40, 0], [0, 100, 0, 0], [0, 100, 0, 0]]
+			new_matrix = [[0, 0, 0, 0], [0, 50, 50, 0], [0, 100, 0, 0], [0, 100, 0, 0]]
 		elif time >= behaviour['leaveWorkTime']:
 			new_matrix = [[100, 0, 0, 0], [70, 30, 0, 0], [0, 100, 0, 0], [0, 0, 0, 0]]
 		return new_matrix 

@@ -83,11 +83,11 @@ class WorkerAgent(Agent):
 
         # Stress attributes initialization
         self.stress = 0
-        self.event_stress = random.randrange(0, 3)/10
-        self.effective_fatigue = 0
-        self.time_pressure = random.randrange(0, 3)/10
+        self.event_stress = 0
+        self.effective_fatigue = random.uniform(-0.35, 0.35)
+        self.time_pressure = 0
         self.productivity = 1
-
+        self.addedTasks = random.uniform(-4, 4)
 
     # Methods when entering/exit states
     def start_activity(self):
@@ -103,7 +103,7 @@ class WorkerAgent(Agent):
         else:
             self.movements = [self.pos]
         time_in_state = self.model.getTimeInState(self)[list(self.positionByState.keys()).index(self.state)]
-        self.time_activity = int(self.model.clock.getMinuteFromHours(time_in_state)*60 / configuration.settings.time_by_step)
+        self.time_activity = random.uniform(0.8, 1.2)*int(self.model.clock.getMinuteFromHours(time_in_state)*60 / configuration.settings.time_by_step)
         self.N = 0
 
     def finish_activity(self):
@@ -252,7 +252,7 @@ class WorkerAgent(Agent):
         #self.printTimePressure()
         #self.printEffectiveFatigue()
         #self.printTasksNumber()
-        self.stress = min(1, (self.event_stress + self.time_pressure + self.effective_fatigue) / 3)
+        self.stress = min(1, (1*self.event_stress + 1.2*self.time_pressure + 1.6*self.effective_fatigue)/4)
         self.stress = max(0, self.stress)
         self.calculateProductivity()
 
@@ -260,9 +260,6 @@ class WorkerAgent(Agent):
         #self.printProductivity()
         if self.creation != True:
             self.logStress()
-        if self.unique_id == 1:
-            print(self.stress)
-            print(self.state)
 
     def logStress(self):
     	#model.ramenScript.addAgentEmotion(self, self.stress)
@@ -317,7 +314,7 @@ class WorkerAgent(Agent):
         self.productivity = 1/(0.4*math.sqrt(2*math.pi))*pow(math.e, -0.5*pow(((self.stress-0.5)/0.2), 2))
 
     def calculateEventStress(self, tasks_number):
-        self.event_stress = min(1, tasks_number/2/self.average_daily_tasks)
+        self.event_stress = min(1, (tasks_number+self.addedTasks)/2/self.average_daily_tasks)
 
     def calculateTimePressure(self):
         total_tasks_remaining_time = sum(task.remaining_time for task in self.tasks)
@@ -370,7 +367,10 @@ class WorkerAgent(Agent):
             wpmf = abs(self.model.sensor.luminosity-600)*model_settings.luminosity_contibution
             self.effective_fatigue += (wpmf/(wpmf+self.fatigue_tolerance))/general_settings.time_by_step
         else:
-            wpmf = 600/(4*abs(600-self.model.sensor.luminosity))*model_settings.luminosity_contibution
+            if (600-self.model.sensor.luminosity != 0):
+                wpmf = 600/(4*abs(600-self.model.sensor.luminosity))*model_settings.luminosity_contibution
+            else:
+                wpmf = 100
             self.effective_fatigue -= wpmf/10/general_settings.time_by_step
 
         if self.effective_fatigue > 1: self.effective_fatigue = 1

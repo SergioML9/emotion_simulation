@@ -34,8 +34,8 @@ class SensorAgent(Agent):
 
         # luminosity
 
-        if random.choice([True, False]): self.luminosity += 20/general_settings.time_by_step
-        else: self.luminosity -= 20/general_settings.time_by_step
+        if random.choice([True, False]): self.luminosity += 600/general_settings.time_by_step
+        else: self.luminosity -= 600/general_settings.time_by_step
         self.luminosity = max(350, min(1000, self.luminosity))
         for light in self.model.lights:
             light.luminosity = self.luminosity
