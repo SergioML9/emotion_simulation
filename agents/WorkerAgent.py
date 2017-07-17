@@ -83,9 +83,9 @@ class WorkerAgent(Agent):
 
         # Stress attributes initialization
         self.stress = 0
-        self.event_stress = random.randrange(0, 5)/10
+        self.event_stress = random.randrange(0, 3)/10
         self.effective_fatigue = 0
-        self.time_pressure = random.randrange(0, 5)/10
+        self.time_pressure = random.randrange(0, 3)/10
         self.productivity = 1
 
 
@@ -246,6 +246,8 @@ class WorkerAgent(Agent):
 
         else:
             self.rest()
+            if len(self.tasks) > 0:
+                    self.workInTask()
 
         #self.printTimePressure()
         #self.printEffectiveFatigue()
